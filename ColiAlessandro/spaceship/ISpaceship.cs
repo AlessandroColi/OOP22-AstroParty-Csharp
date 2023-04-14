@@ -2,36 +2,19 @@ namespace ColiAlessandro.spaceship
 {   /// <summary>
     /// Interface for a basic spaceship in AstroParty.
     /// </summary>
-    public interface ISpaceship
+    public interface ISpaceship : IEntity
     {
         /// <summary>
         /// Resets the position of the spaceship before the update.
         /// </summary>
         void ResetPosition();
-    
-        /// <summary>
-        /// the position of the entity.
-        /// </summary>
-        /// <returns>the position</returns>
-        Position GetPosition();
-        
-        /// <summary>
-        /// Determines whether the entity was hit.
-        /// </summary>
-        /// <returns>True if the entity was hit.</returns>
-        bool Hit();
 
-        /// <summary>
-        /// Tells the entity how much time has passed since the last update.
-        /// </summary>
-        /// <param name="time">The time that has passed in milliseconds.</param>
-        void Update(double time);
         /// <summary>
         /// Equips a power up to the spaceship.
         /// </summary>
-        /// <param name="pUp">The PowerUp to be equipped.</param>
+        /// <param name="pUp">The Powerup to be equipped.</param>
         /// <returns>True if it can be picked up.</returns>
-        bool EquipPowerUp(PowerUp pUp);
+        bool EquipPowerUp(IPowerup pUp);
 
         /// <summary>
         /// Shoots a Projectile.
@@ -47,7 +30,7 @@ namespace ColiAlessandro.spaceship
         /// Removes the power up after it's been used.
         /// </summary>
         /// <param name="upgradedSpeed">The power up to be removed.</param>
-        void RemovePowerUp(PowerUp upgradedSpeed);
+        void RemovePowerUp(IPowerup upgradedSpeed);
 
         /// <summary>
         /// either can be killed or not ( does not consider the shield )
@@ -67,7 +50,7 @@ namespace ColiAlessandro.spaceship
         /// <summary>
         /// The CircleHitBox of the spaceship.
         /// </summary>
-        CircleHitBox HitBox{ get ; }
+        ICircleHitBox GetHitBox();
 
         /// <summary>
         /// The travel speed.
@@ -79,9 +62,5 @@ namespace ColiAlessandro.spaceship
         /// </summary>
         bool Turning{ ; set }
 
-        /// <summary>
-        /// the graphic entity of this power up.
-        /// </summary>
-        GraphicEntity GraphicComponent{ get ; }
     }
 }

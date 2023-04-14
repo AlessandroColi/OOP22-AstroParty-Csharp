@@ -8,21 +8,20 @@ namespace ColiAlessandro.spaceship
         public bool Mortal{ private get ; set }
         public double Angle{ get ; private set }
         public PlayerId Id{ get ; private set }
-        public CircleHitBox HitBox{ get ; private set }
-        GraphicEntity GraphicComponent{ get ; }     //TODO: fagli restituire sempre un grafic component ( prob non vera impl)
+        IGraphicEntity GraphicComponent{ get ; }     //TODO: fagli restituire sempre un grafic component ( impl o int? )
         public double Speed{ get ; set }
         public bool Turning{private get ; set }
 
         private Position _position;
         private Position _lastPosition;
 
-        private PowerUp? _powerUp;
+        private IPowerup? _powerUp;
         private bool _shield;
 
         private Direction _direction;
         private double _angle;
 
-        private GameState _world;
+        private IGameState _world;
 
         private readonly int _maxBullets;
         private readonly long _bulletRegenTime;
@@ -32,7 +31,7 @@ namespace ColiAlessandro.spaceship
         private Timer _timer = new System.Timers.Timer();
 
         public SimpleSpaceship( Position startPosition; Direction startDirection;
-                        double angle; GameState world; double speed;
+                        double angle; IGameState world; double speed;
                         int maxBullets; bool startingShield;
                         PlayerId id; long bulletRegenTime)
         {
@@ -61,7 +60,7 @@ namespace ColiAlessandro.spaceship
     
         Position GetPosition() => _position;
 
-        bool EquipPowerUp(PowerUp pUp) => _powerUp = pUp;
+        bool EquipPowerUp(IPowerup pUp) => _powerUp = pUp;
 
         void Shoot()
         {
@@ -107,14 +106,16 @@ namespace ColiAlessandro.spaceship
 
         void NewShield() => _shield = true;
 
-        void RemovePowerUp(PowerUp pUp) {
+        void RemovePowerUp(IPowerup pUp) {
             if( pUp == _powerUp ?? null)
             {
                 _powerUp = null;
             }
         }
 
-        private void  CreateProjectile() => _world.add( new Projectile() );
+        ICircleHitBox GetHitBox(); //TODO
+
+        private void  CreateProjectile() => _world.add( new IProjectile() );
 
         private void StartTimer()
         {
@@ -136,7 +137,11 @@ namespace ColiAlessandro.spaceship
 
         private void UpdateDirection( double time )
         {
-            //TODO
+            _angle = ( _angle + turnTime * Spaceship.ROTATION_SPEED ) % 360; //costante giusta?
+            double dirX = Math.cos( Math.PI * _angle / 180.0);
+            double dirY = Math.sin( Math.PI * _angle / 180.0);
+
+            _direction = new Direction(dirX, dirY);
         }
 
         private void Move( double time )
