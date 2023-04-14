@@ -1,3 +1,4 @@
+using System.Globalization;
 using System.Data.Common;
 using System;
 namespace ColiAlessandro.spaceship
@@ -27,6 +28,9 @@ namespace ColiAlessandro.spaceship
         private readonly long _bulletRegenTime;
         private int _bullets;
 
+        private bool _recharging;
+        private Timer _timer = new System.Timers.Timer();
+
         public SimpleSpaceship( Position startPosition; Direction startDirection;
                         double angle; GameState world; double speed;
                         int maxBullets; bool startingShield;
@@ -41,8 +45,13 @@ namespace ColiAlessandro.spaceship
             _angle = angle;
             _maxBullets = maxBullets;
             _bullets = maxBullets;
-            Speed.set(speed);
-            Id.set(id);
+            Speed = speed ;
+            Id = id;
+
+            // set timer proprieties
+            _timer.Interval = _bulletRegenTime;
+            _timer.AutoReset = false;
+            _timer.Elapsed += ( sender, e ) => AddBullet();
         }
 
         public void ResetPosition()
@@ -54,11 +63,47 @@ namespace ColiAlessandro.spaceship
 
         bool EquipPowerUp(PowerUp pUp) => _powerUp = pUp;
 
-        void Shoot(); //TODO
+        void Shoot()
+        {
+            if( _bullets == 0)
+            {
+                return;
+            }
 
-        bool Hit(); //TODO
+            if( _powerUp.Offensive ){
+                //TODO switch con i possibili tipi
+            }else{
+                CreateProjectile();
+            }
+            StartTimer();
+        }
 
-        void Update(double time); //TODO
+        bool Hit()
+        {
+            if( !Mortal )
+            {
+                return false;
+            }
+            if( _shield ){
+                _shield =  false;
+                return false;
+            }
+            return true;
+        }
+
+        void Update(double time)
+        {
+            if( Turning ){
+                UpdateDirection( time );
+            }
+
+            if( _powerUp.HasValue )
+            {
+                _powerUp.Value.Update( time );
+            }
+
+            Move( time );
+        }
 
         void NewShield() => _shield = true;
 
@@ -67,6 +112,37 @@ namespace ColiAlessandro.spaceship
             {
                 _powerUp = null;
             }
+        }
+
+        private void  CreateProjectile() => _world.add( new Projectile() );
+
+        private void StartTimer()
+        {
+            if( !_timer.Enabled && _recharging ){
+                _timer.start();
+                _recharging = true;
+            }
+        }
+
+        private void AddBullet()
+        {
+            _bullets ++;
+            _recharging = false;
+            if( _bullets < _maxBullets )
+            {
+                StartTimer();
+            }
+        }
+
+        private void UpdateDirection( double time )
+        {
+            //TODO
+        }
+
+        private void Move( double time )
+        {
+            _lastPosition = _position;
+            _position = _position.Add( _direction.Multiply( Speed * time ) );
         }
     }
 }
