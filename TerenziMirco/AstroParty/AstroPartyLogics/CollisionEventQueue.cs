@@ -7,18 +7,18 @@ namespace AstroPartyLogics
         public CollisionEventQueue() => _queue = new Queue<IEvent>();
 
         /// <inheritdoc />
-        public void notify(IEvent e)
+        public void Notify(IEvent e)
         {
             _queue.Enqueue(e);
         }
 
         /// <summary>Manages all the events in the queue.</summary>
         /// <param name="state">The current state of the game world.</param>
-        public void manageEvents(IGameState state)
+        public void ManageEvents(IGameState state)
         {
             while (_queue.Count > 0)
             {
-                _queue.Dequeue().manage(state);
+                _queue.Dequeue().Manage(state);
             }
         }
     }

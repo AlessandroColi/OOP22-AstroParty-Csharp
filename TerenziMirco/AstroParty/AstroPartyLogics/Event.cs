@@ -10,7 +10,7 @@ namespace AstroPartyLogics
             _manageAction = manageAction;
         }
 
-        public void manage(IGameState state)
+        public void Manage(IGameState state)
         {
             _manageAction(state);
         }

@@ -8,46 +8,46 @@ namespace AstroPartyLogics
     {
 
         /// <inheritdoc />
-        public IEvent spaceshipColliedEvent(ISpaceship spaceship)
-            => new Event(state => spaceship.resetPosition());
+        public IEvent SpaceshipColliedEvent(ISpaceship spaceship)
+            => new Event(state => spaceship.ResetPosition());
 
         /// <inheritdoc />
-        public IEvent projectileHitEvent(IProjectile projectile)
+        public IEvent ProjectileHitEvent(IProjectile projectile)
             => new Event(state =>
                 {
-                    if (projectile.hit())
+                    if (projectile.Hit())
                     {
-                        state.removeProjectile(projectile);
+                        state.RemoveProjectile(projectile);
                     }
                 });
 
         /// <inheritdoc />
-        public IEvent obstacleHittedEvent(IObstacle obstacle)
+        public IEvent ObstacleHittedEvent(IObstacle obstacle)
             => new Event(state =>
                 {
-                    if (obstacle.hit())
+                    if (obstacle.Hit())
                     {
-                        state.removeObstacle(obstacle);
+                        state.RemoveObstacle(obstacle);
                     }
                 });
 
         /// <inheritdoc />
-        public IEvent spaceshipHittedEvent(ISpaceship spaceship)
+        public IEvent SpaceshipHittedEvent(ISpaceship spaceship)
             => new Event(state =>
                 {
-                    if (spaceship.hit())
+                    if (spaceship.Hit())
                     {
-                        state.removeSpaceship(spaceship);
+                        state.RemoveSpaceship(spaceship);
                     }
                 });
 
         /// <inheritdoc />
-        public IEvent powerUpEquipEvent(IPowerUp powerUp, ISpaceship spaceship)
+        public IEvent PowerUpEquipEvent(IPowerUp powerUp, ISpaceship spaceship)
             => new Event(state =>
                 {
-                    if (spaceship.equipPowerUp(powerUp))
+                    if (spaceship.EquipPowerUp(powerUp))
                     {
-                        state.removePowerUp(powerUp);
+                        state.RemovePowerUp(powerUp);
                     }
                 });
     }

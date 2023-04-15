@@ -5,7 +5,7 @@ namespace ExtraAPI
     /// </summary>
     public interface ISpaceship : IEntity
     {
-        void resetPosition();
-        bool equipPowerUp(IPowerUp pUp);
+        void ResetPosition();
+        bool EquipPowerUp(IPowerUp pUp);
     }
 }

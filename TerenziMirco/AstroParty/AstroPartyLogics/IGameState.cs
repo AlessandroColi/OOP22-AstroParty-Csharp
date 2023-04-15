@@ -22,9 +22,6 @@ namespace AstroPartyLogics
         /// <summary>X coordinates of the right part of the game world.</summary>
         const double RIGHT_SIDE = LEFT_SIDE + WIDTH;
 
-        /// <returns>A collection of all the entities in the game</returns>
-        ICollection<IEntity> getEntities();
-
         /// <value>Collection of all the spaceship in the game</value>
         ICollection<ISpaceship> Spaceships { get; }
 
@@ -37,36 +34,39 @@ namespace AstroPartyLogics
         /// <value>Collection of all the power-ups in the game</value>
         ICollection<IPowerUp> PowerUps { get; }
 
+        /// <value>Collection of all the entities in the game</value>
+        ICollection<IEntity> Entities { get; }
+
         /// <summary>Called to update the position and status of all the entities in the map
         /// and manage their interactions.</summary>
         /// <param name="time">The time elapsed from the last update.</param>
-        void update(double time);
+        void Update(double time);
 
         /// <returns>True if the game is over, otherwise false.</param>
-        bool isOver();
+        bool IsOver();
 
         /// <param name="spaceship">The spaceship to be added.</param>
-        void addSpaceship(ISpaceship spaceship);
+        void AddSpaceship(ISpaceship spaceship);
 
         /// <param name="obstacle">The obstacle to be added.</param>
-        void addObstacle(IObstacle obstacle);
+        void AddObstacle(IObstacle obstacle);
 
         /// <param name="projectile">The projectile to be added.</param>
-        void addProjectile(IProjectile projectile);
+        void AddProjectile(IProjectile projectile);
 
         /// <param name="powerUp">The power-up to be added.</param>
-        void addPowerUp(IPowerUp powerUp);
+        void AddPowerUp(IPowerUp powerUp);
 
         /// <param name="spaceship">The spaceship to be removed.</param>
-        void removeSpaceship(ISpaceship spaceship);
+        void RemoveSpaceship(ISpaceship spaceship);
 
         /// <param name="obstacle">The obstacle to be removed.</param>
-        void removeObstacle(IObstacle obstacle);
+        void RemoveObstacle(IObstacle obstacle);
 
         /// <param name="projectile">The projectile to be removed.</param>
-        void removeProjectile(IProjectile projectile);
+        void RemoveProjectile(IProjectile projectile);
 
         /// <param name="powerUp">The power-up to be removed.</param>
-        void removePowerUp(IPowerUp powerUp);
+        void RemovePowerUp(IPowerUp powerUp);
     }
 }
