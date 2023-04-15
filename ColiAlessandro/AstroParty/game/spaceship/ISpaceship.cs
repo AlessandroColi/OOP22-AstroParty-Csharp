@@ -5,6 +5,14 @@ namespace ColiAlessandro.AstroParty.game.spaceship
     public interface ISpaceship : IEntity
     {
         /// <summary>
+        /// the size relative to the map. 
+        /// </summary>
+        const double RELATIVE_SIZE = 3;
+        /// <summary>
+        /// the speed at which a SpaceShip rotates. 
+        /// </summary>
+        const double ROTATION_SPEED = 0.25;
+        /// <summary>
         /// Resets the position of the spaceship before the update.
         /// </summary>
         void ResetPosition();

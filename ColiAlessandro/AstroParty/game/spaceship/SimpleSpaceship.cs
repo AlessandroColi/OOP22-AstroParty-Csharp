@@ -139,7 +139,7 @@ namespace ColiAlessandro.AstroParty.game.spaceship
 
         private void UpdateDirection( double time )
         {
-            _angle = ( _angle + turnTime * Spaceship.ROTATION_SPEED ) % 360; //costante giusta?
+            _angle = ( _angle + turnTime * ISpaceship.ROTATION_SPEED ) % 360;
             double dirX = Math.cos( Math.PI * _angle / 180.0);
             double dirY = Math.sin( Math.PI * _angle / 180.0);
 
