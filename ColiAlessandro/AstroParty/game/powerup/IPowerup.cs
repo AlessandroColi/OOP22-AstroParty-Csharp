@@ -1,4 +1,4 @@
-namespace ColiAlessandro.powerup
+namespace ColiAlessandro.AstroParty.game.powerup
 {   /// <summary>
     /// A power up inside AstroParty. 
     /// </summary>

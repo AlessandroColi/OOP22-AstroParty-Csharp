@@ -1,4 +1,4 @@
-namespace ColiAlessandro
+namespace ColiAlessandro.AstroParty.extra.api
 {
     public interface IEntity
     {

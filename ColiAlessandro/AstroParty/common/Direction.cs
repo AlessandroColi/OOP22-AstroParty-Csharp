@@ -1,4 +1,4 @@
-namespace ColiAlessandro.general
+namespace ColiAlessandro.AstroParty.common
 {
     public class Direction
     {

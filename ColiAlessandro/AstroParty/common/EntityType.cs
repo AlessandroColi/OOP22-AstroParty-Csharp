@@ -1,4 +1,4 @@
-namespace ColiAlessandro.general.api
+namespace ColiAlessandro.AstroParty.common
 {
     public enum EntityType
     {

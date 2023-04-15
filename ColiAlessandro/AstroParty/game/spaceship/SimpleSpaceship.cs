@@ -1,16 +1,16 @@
 using System.Globalization;
 using System.Data.Common;
 using System;
-namespace ColiAlessandro.spaceship
+namespace ColiAlessandro.AstroParty.game.spaceship
 {
     public class SimpleSpaceship : ISpaceship
     {
-        public bool Mortal{ private get ; set }
-        public double Angle{ get ; private set }
-        public PlayerId Id{ get ; private set }
+        public bool Mortal{ private get ; set; }
+        public double Angle{ get ; private set; }
+        public PlayerId Id{ get ; private set; }
         IGraphicEntity GraphicComponent{ get ; }     //TODO: fagli restituire sempre un grafic component ( impl o int? )
-        public double Speed{ get ; set }
-        public bool Turning{private get ; set }
+        public double Speed{ get ; set; }
+        public bool Turning{private get ; set; }
 
         private Position _position;
         private Position _lastPosition;
@@ -30,10 +30,10 @@ namespace ColiAlessandro.spaceship
         private bool _recharging;
         private Timer _timer = new System.Timers.Timer();
 
-        public SimpleSpaceship( Position startPosition; Direction startDirection;
-                        double angle; IGameState world; double speed;
-                        int maxBullets; bool startingShield;
-                        PlayerId id; long bulletRegenTime)
+        public SimpleSpaceship( Position startPosition, Direction startDirection,
+                        double angle, IGameState world, double speed,
+                        int maxBullets, bool startingShield,
+                        PlayerId id, long bulletRegenTime)
         {
             _position = startPosition;
             _lastPosition = startPosition;

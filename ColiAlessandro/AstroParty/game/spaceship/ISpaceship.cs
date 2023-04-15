@@ -1,4 +1,4 @@
-namespace ColiAlessandro.spaceship
+namespace ColiAlessandro.AstroParty.game.spaceship
 {   /// <summary>
     /// Interface for a basic spaceship in AstroParty.
     /// </summary>
@@ -35,7 +35,7 @@ namespace ColiAlessandro.spaceship
         /// <summary>
         /// either can be killed or not ( does not consider the shield )
         /// </summary>
-        bool Mortal{ ; set }
+        bool Mortal{ get ; set; }
 
         /// <summary>
         /// The rotation angle.
@@ -55,12 +55,12 @@ namespace ColiAlessandro.spaceship
         /// <summary>
         /// The travel speed.
         /// </summary>
-        double Speed{ get ; set }
+        double Speed{ get ; set; }
 
         /// <summary>
         /// the spaceship is turnong or not.
         /// </summary>
-        bool Turning{ ; set }
+        bool Turning{ get ; set; }
 
     }
 }
