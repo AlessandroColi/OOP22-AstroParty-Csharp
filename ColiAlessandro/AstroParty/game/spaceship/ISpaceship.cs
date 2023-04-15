@@ -50,7 +50,7 @@ namespace ColiAlessandro.AstroParty.game.spaceship
         /// <summary>
         /// The CircleHitBox of the spaceship.
         /// </summary>
-        ICircleHitBox GetHitBox();
+        override ICircleHitBox GetHitBox();
 
         /// <summary>
         /// The travel speed.

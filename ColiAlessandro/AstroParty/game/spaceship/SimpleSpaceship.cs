@@ -5,18 +5,13 @@ namespace ColiAlessandro.AstroParty.game.spaceship
 {
     public class SimpleSpaceship : ISpaceship
     {
-        public bool Mortal{ private get ; set; }
-        public double Angle{ get ; private set; }
-        public PlayerId Id{ get ; private set; }
-        IGraphicEntity GraphicComponent{ get ; }     //TODO: fagli restituire sempre un grafic component ( impl o int? )
-        public double Speed{ get ; set; }
-        public bool Turning{private get ; set; }
 
         private Position _position;
         private Position _lastPosition;
 
         private IPowerup? _powerUp;
         private bool _shield;
+        private bool _immortal;
 
         private Direction _direction;
         private double _angle;
@@ -26,9 +21,16 @@ namespace ColiAlessandro.AstroParty.game.spaceship
         private readonly int _maxBullets;
         private readonly long _bulletRegenTime;
         private int _bullets;
-
         private bool _recharging;
         private Timer _timer = new System.Timers.Timer();
+
+        public bool Mortal{ get => _immortal || _shield ; 
+                            set => _immortal ; }
+        public double Angle{ get ; private set; }
+        public PlayerId Id{ get ; private set; }
+        IGraphicEntity GraphicComponent{ get ; }     //TODO: fagli restituire sempre un grafic component ( impl o int? )
+        public double Speed{ get ; set; }
+        public bool Turning{ get ; set; }
 
         public SimpleSpaceship( Position startPosition, Direction startDirection,
                         double angle, IGameState world, double speed,

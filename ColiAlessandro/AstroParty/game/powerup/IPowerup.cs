@@ -24,6 +24,6 @@ namespace ColiAlessandro.AstroParty.game.powerup
         /// <summary>
         /// the hitbox of the PowerUp.
         /// </summary>
-        ICircleHitBox GetHitbox();
+        override ICircleHitBox GetHitbox();
     }
 }
