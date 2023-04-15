@@ -1,10 +1,11 @@
+using ExtraAPI;
 namespace AstroPartyLogics
 {
     /// <summary>
     /// Factory interface from simple factory pattern that handles events creation.
     /// </summary>
-    public interface EventFactory {
-
+    public interface IEventFactory
+    {
         /// <summary>Create a new event for a spaceship collision.</summary>
         /// <param name="spaceship">The spaceship that collied</param>
         /// <returns>The created event.</returns>

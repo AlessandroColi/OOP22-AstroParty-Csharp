@@ -1,3 +1,4 @@
+using ExtraAPI;
 namespace AstroPartyLogics
 {
     /// <summary>Interface that models the state of the game.</summary>

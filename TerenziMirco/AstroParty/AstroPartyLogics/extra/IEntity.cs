@@ -1,4 +1,4 @@
-namespace AstroPartyLogics
+namespace ExtraAPI
 {
     /// <summary>
     /// An interface rappresenting most of the objects in the game.
