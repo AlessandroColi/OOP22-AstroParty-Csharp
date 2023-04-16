@@ -3,3 +3,6 @@
 .classpath
 .vs/
 .vscode
+
+obj/
+bin/
