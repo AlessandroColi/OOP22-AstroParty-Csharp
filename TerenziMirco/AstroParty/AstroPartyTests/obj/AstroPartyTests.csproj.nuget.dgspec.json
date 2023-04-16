@@ -1,0 +1,136 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/mirco/Desktop/OOP22-AstroParty-Csharp/TerenziMirco/AstroParty/AstroPartyTests/AstroPartyTests.csproj": {}
+  },
+  "projects": {
+    "/Users/mirco/Desktop/OOP22-AstroParty-Csharp/TerenziMirco/AstroParty/AstroPartyLogics/AstroPartyLogics.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/mirco/Desktop/OOP22-AstroParty-Csharp/TerenziMirco/AstroParty/AstroPartyLogics/AstroPartyLogics.csproj",
+        "projectName": "AstroPartyLogics",
+        "projectPath": "/Users/mirco/Desktop/OOP22-AstroParty-Csharp/TerenziMirco/AstroParty/AstroPartyLogics/AstroPartyLogics.csproj",
+        "packagesPath": "/Users/mirco/.nuget/packages/",
+        "outputPath": "/Users/mirco/Desktop/OOP22-AstroParty-Csharp/TerenziMirco/AstroParty/AstroPartyLogics/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/mirco/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.203/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/mirco/Desktop/OOP22-AstroParty-Csharp/TerenziMirco/AstroParty/AstroPartyTests/AstroPartyTests.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/mirco/Desktop/OOP22-AstroParty-Csharp/TerenziMirco/AstroParty/AstroPartyTests/AstroPartyTests.csproj",
+        "projectName": "AstroPartyTests",
+        "projectPath": "/Users/mirco/Desktop/OOP22-AstroParty-Csharp/TerenziMirco/AstroParty/AstroPartyTests/AstroPartyTests.csproj",
+        "packagesPath": "/Users/mirco/.nuget/packages/",
+        "outputPath": "/Users/mirco/Desktop/OOP22-AstroParty-Csharp/TerenziMirco/AstroParty/AstroPartyTests/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/mirco/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "/Users/mirco/Desktop/OOP22-AstroParty-Csharp/TerenziMirco/AstroParty/AstroPartyLogics/AstroPartyLogics.csproj": {
+                "projectPath": "/Users/mirco/Desktop/OOP22-AstroParty-Csharp/TerenziMirco/AstroParty/AstroPartyLogics/AstroPartyLogics.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "MSTest.TestAdapter": {
+              "target": "Package",
+              "version": "[2.2.10, )"
+            },
+            "MSTest.TestFramework": {
+              "target": "Package",
+              "version": "[2.2.10, )"
+            },
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[17.5.0, )"
+            },
+            "coverlet.collector": {
+              "target": "Package",
+              "version": "[3.2.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.203/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
