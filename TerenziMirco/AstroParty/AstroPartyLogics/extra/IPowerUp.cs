@@ -5,6 +5,5 @@ namespace ExtraAPI
     /// </summary>
     public interface IPowerUp : IEntity
     {
-        //TODO
     }
 }
