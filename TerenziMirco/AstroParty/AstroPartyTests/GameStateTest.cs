@@ -3,7 +3,17 @@ namespace AstroPartyTests;
 [TestClass]
 public class GameStateTest
 {
-    private readonly CollisionEventQueue _queue = new CollisionEventQueue();
+    private class ObserverExample : IObserver
+    {
+        public Queue<IEvent> Queue { get; }
+
+        public ObserverExample() => Queue = new Queue<IEvent>();
+
+        public void Notify(IEvent e)
+        {
+            Queue.Enqueue(e);
+        }
+    }
 
     [TestMethod]
     public void TestSpaceships()
@@ -91,5 +101,19 @@ public class GameStateTest
 
         state.RemovePowerUp(p1);
         Assert.AreEqual(state.Entities.Count, 1);
+    }
+
+    [TestMethod]
+    public void TestObservable()
+    {
+        var state = new GameState();
+        var observer = new ObserverExample();
+        IEvent eventExample = new Event(_ => Console.WriteLine("EventManageExample - should not be written"));
+        state.RegisterObserver(observer);
+        state.NotifyObservers(eventExample);
+        Assert.AreEqual(observer.Queue.Count, 1);
+        state.NotifyObservers(eventExample);
+        state.NotifyObservers(eventExample);
+        Assert.AreEqual(observer.Queue.Count, 3);
     }
 }

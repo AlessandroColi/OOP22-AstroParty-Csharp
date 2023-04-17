@@ -9,7 +9,7 @@ namespace AstroPartyLogics
 
         /// <inheritdoc />
         public IEvent SpaceshipColliedEvent(ISpaceship spaceship)
-            => new Event(state => spaceship.ResetPosition());
+            => new Event(_ => spaceship.ResetPosition());
 
         /// <inheritdoc />
         public IEvent ProjectileHitEvent(IProjectile projectile)
