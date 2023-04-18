@@ -1,6 +1,4 @@
-using System.Globalization;
-using System.Data.Common;
-using System;
+
 namespace ColiAlessandro.AstroParty.game.spaceship
 {
     public class SimpleSpaceship : ISpaceship
@@ -24,7 +22,7 @@ namespace ColiAlessandro.AstroParty.game.spaceship
         private bool _recharging;
         private Timer _timer = new System.Timers.Timer();
 
-        public bool Mortal{ get => _immortal || _shield ; 
+        public bool Mortal{ get => !(_immortal || _shield); 
                             set => _immortal ; }
         public double Angle{ get ; private set; }
         public PlayerId Id{ get ; private set; }

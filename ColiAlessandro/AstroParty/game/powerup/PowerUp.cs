@@ -23,6 +23,8 @@ namespace ColiAlessandro.AstroParty.game.PowerUp
 
         override ICircleHitBox GetHitbox(); //TODO
 
+        protected ISpaceship GetOwner() => _owner;
+
         abstract void Use();
 
         abstract void Update(double time);
