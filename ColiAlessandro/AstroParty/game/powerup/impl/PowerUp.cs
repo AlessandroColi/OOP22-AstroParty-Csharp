@@ -16,7 +16,7 @@ namespace ColiAlessandro.AstroParty.game.PowerUp.impl
 
         EntityType Type{ get ; private set; }
 
-        IgraphicEntity GraphicComponent{ get ; } //TODO
+        IgraphicEntity GraphicComponent{ get => new GraphicEntity(_position, IPowerup.RELATIVE_SIZE, Type); ; } 
 
         Position GetPosition() => _position;
         
@@ -29,7 +29,7 @@ namespace ColiAlessandro.AstroParty.game.PowerUp.impl
             return true;
         }
 
-        override ICircleHitBox GetHitbox(); //TODO
+        override ICircleHitBox GetHitbox() => null; // not implemented in C#
 
         protected ISpaceship GetOwner() => _owner;
 

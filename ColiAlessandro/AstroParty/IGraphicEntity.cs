@@ -17,15 +17,15 @@ namespace ColiAlessandro.AstroParty
         ///</returns>
         double GetLength();
 
-        ///</returns>
+        ///</summary>
         ///the {@linkplain EntityType} of the entity to be drawn.
-        ///</returns>
+        ///</summary>
         EntityType GetType();
 
         /// <summary>
         /// the id of the spaceship ( only used for spaeschips and not for other entities)
         /// </summary>
-        PlayerId Id{ get ; set; }
+        PlayerId? Id{ get ; set; }
 
         /// <summary>
         /// the angle at witch the entity is rotated

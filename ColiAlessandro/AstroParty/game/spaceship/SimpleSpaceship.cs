@@ -26,7 +26,13 @@ namespace ColiAlessandro.AstroParty.game.spaceship
                             set => _immortal ; }
         public double Angle{ get ; private set; }
         public PlayerId Id{ get ; private set; }
-        IGraphicEntity GraphicComponent{ get ; }     //TODO: fagli restituire sempre un grafic component ( impl o int? )
+        IGraphicEntity GraphicComponent{ 
+            get {
+                var ret = new GraphicEntity(_position, ISpaceship.RELATIVE_SIZE, EntityType.SPACESHIP);
+                ret.Angle = _angle;
+                ret.Id = Id;
+                return ret;
+            } }    
         public double Speed{ get ; set; }
         public bool Turning{ get ; set; }
 
@@ -113,7 +119,7 @@ namespace ColiAlessandro.AstroParty.game.spaceship
             }
         }
 
-        ICircleHitBox GetHitBox(); //TODO
+        ICircleHitBox GetHitBox()=> null; // not implemented in C#
 
         private void  CreateProjectile() => _world.add( new IProjectile() );
 
