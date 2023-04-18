@@ -76,7 +76,21 @@ namespace ColiAlessandro.AstroParty.game.spaceship
             }
 
             if( _powerUp.Offensive ){
-                //TODO switch con i possibili tipi
+                // switch for future implementations of other powerUps
+                switch ( _powerUp.Type )    
+                {
+                    case EntityType.DOUBLESHOT:
+                    {
+                        CreateProjectile();
+                        CreateProjectile();
+                        break;
+                    }
+
+                    default: 
+                        throw new ArgumentException("Type not possible");
+                }
+
+            }
             }else{
                 CreateProjectile();
             }

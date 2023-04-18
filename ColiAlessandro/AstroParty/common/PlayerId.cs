@@ -1,6 +1,6 @@
 namespace ColiAlessandro.AstroParty.common
 {
-    public enum PyerId
+    public enum PlayerId
     {
         PLAYER1,
         PLAYER2,
