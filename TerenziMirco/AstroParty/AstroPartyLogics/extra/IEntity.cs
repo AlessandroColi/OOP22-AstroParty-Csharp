@@ -1,4 +1,4 @@
-namespace AstroPartyLogics
+namespace ExtraAPI
 {
     /// <summary>
     /// An interface rappresenting most of the objects in the game.
@@ -11,12 +11,12 @@ namespace AstroPartyLogics
 
 
         /// <returns>True if is killed/destroyed, false otherwise.</returns>
-        bool hit();
+        bool Hit();
 
         /// <summary>
         /// Tells the entity how much time has passed since the last update.
         /// </summary>
         /// <param name="time">The time in milliseconds.</param>
-        void update(double time);
+        void Update(double time);
     }
 }

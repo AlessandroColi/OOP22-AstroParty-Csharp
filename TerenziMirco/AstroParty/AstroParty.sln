@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AstroPartyLogics", "AstroPartyLogics\AstroPartyLogics.csproj", "{54464677-9024-437C-9387-AB554146E512}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AstroPartyTests", "AstroPartyTests\AstroPartyTests.csproj", "{44F51FB2-1ED5-476E-A03F-B8DB3B51EFCA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{54464677-9024-437C-9387-AB554146E512}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{54464677-9024-437C-9387-AB554146E512}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{54464677-9024-437C-9387-AB554146E512}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44F51FB2-1ED5-476E-A03F-B8DB3B51EFCA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44F51FB2-1ED5-476E-A03F-B8DB3B51EFCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44F51FB2-1ED5-476E-A03F-B8DB3B51EFCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44F51FB2-1ED5-476E-A03F-B8DB3B51EFCA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
