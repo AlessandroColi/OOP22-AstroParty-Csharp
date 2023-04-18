@@ -90,7 +90,6 @@ namespace ColiAlessandro.AstroParty.game.spaceship
                         throw new ArgumentException("Type not possible");
                 }
 
-            }
             }else{
                 CreateProjectile();
             }
