@@ -1,8 +1,8 @@
-namespace ColiAlessandro.AstroParty.game.powerup
+namespace ColiAlessandro.AstroParty.game.powerup.impl
 {
     public class PowerUpFactory : IPowerUpFactory
     {
-        IPowerUp createPowerUp(EntityType type, Position pos)
+        IPowerUp CreatePowerUp(EntityType type, Position pos)
         {
             switch ( type )
             {
@@ -37,24 +37,24 @@ namespace ColiAlessandro.AstroParty.game.powerup
             return new PowerUp( position, false, EntityType.UPGRADEDSPEED ){
 
                 private boolean _inUse;
-                private double _useTime;
+                private double _UseTime;
 
                     override void Use()
                     {
                         base.GetOwner.Speed *= IPowerUp.SPEED_MODIFIER;
                     }
                     
-                void update( double time) {
+                void Update( double time) {
 
-                    if (base.isPickedUp() && !_inUse) {
-                        use();
+                    if (base.IsPickedUp() && !_inUse) {
+                        Use();
                     }
 
                     if (_inUse) {
-                        _useTime += time;
-                        if (_useTime > PowerUp.DURATION) {
+                        _UseTime += time;
+                        if (_UseTime > PowerUp.DURATION) {
                             base.GetOwner.Speed /= IPowerUp.SPEED_MODIFIER;
-                            base.getOwner().removePowerUp(this);
+                            base.GetOwner().RemovePowerUp(this);
                         }
                     }
                 }
@@ -65,15 +65,15 @@ namespace ColiAlessandro.AstroParty.game.powerup
         {
             return new BasicPowerUp(pos, false, EntityType.SHIELD) {
 
-                override void update( double time) {
-                    if (base.isPickedUp()) {
-                        use();
+                override void Update( double time) {
+                    if (base.IsPickedUp()) {
+                        Use();
                     }
                 }
 
-                override void use() {
-                    base.getOwner().newShield();
-                    base.getOwner().removePowerUp(this);
+                override void Use() {
+                    base.GetOwner().NewShield();
+                    base.GetOwner().RemovePowerUp(this);
                 }
             };
         }
@@ -83,24 +83,24 @@ namespace ColiAlessandro.AstroParty.game.powerup
             return new BasicPowerUp(pos, false,  EntityType.IMMORTALITY) {
 
                 private boolean _inUse;
-                private double _useTime;
+                private double _UseTime;
 
-                public void use() {
+                public void Use() {
                     _inUse = true;
-                    base.getOwner().Mortal = false;
+                    base.GetOwner().Mortal = false;
                 }
 
-                public void update( double time) {
+                public void Update( double time) {
 
-                    if (base.isPickedUp() && !_inUse) {
-                        use();
+                    if (base.IsPickedUp() && !_inUse) {
+                        Use();
                     }
 
                     if (_inUse) {
-                        _useTime += time;
-                        if (_useTime > PowerUp.DURATION) {
-                            base.getOwner().Mortal = true;
-                            base.getOwner().removePowerUp(this);
+                        _UseTime += time;
+                        if (_UseTime > PowerUp.DURATION) {
+                            base.GetOwner().Mortal = true;
+                            base.GetOwner().RemovePowerUp(this);
                         }
                     }
                 }
@@ -111,11 +111,11 @@ namespace ColiAlessandro.AstroParty.game.powerup
         {
             return new BasicPowerUp(pos, true,  EntityType.DOUBLESHOT) {
 
-                override void update( double time) {
+                override void Update( double time) {
                 }
 
-                override void use() {
-                    base.getOwner().removePowerUp(this);
+                override void Use() {
+                    base.GetOwner().RemovePowerUp(this);
                 }
             };
         }

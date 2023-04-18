@@ -1,9 +1,10 @@
-namespace ColiAlessandro.AstroParty.game.PowerUp
+namespace ColiAlessandro.AstroParty.game.PowerUp.impl
 {
     public abstract class PowerUp : IPowerup
     {
-        private ISpaceship? _owner;
+        private ISpaceship _owner;
         private readonly Position _position;
+        private boolean _pickedUp;
 
         PowerUp( Position position, boolean offensive, EntityType type )
         {
@@ -19,11 +20,20 @@ namespace ColiAlessandro.AstroParty.game.PowerUp
 
         Position GetPosition() => _position;
         
-        bool PickUp(ISpaceship owner) => _owner;
+        bool PickUp(ISpaceship owner)
+        {
+            if( _owner == null || owner = null){
+                return false
+            }
+            _owner = owner;
+            return true;
+        }
 
         override ICircleHitBox GetHitbox(); //TODO
 
         protected ISpaceship GetOwner() => _owner;
+
+        protected boolean IsPickedUp() => _owner != null;
 
         abstract void Use();
 
