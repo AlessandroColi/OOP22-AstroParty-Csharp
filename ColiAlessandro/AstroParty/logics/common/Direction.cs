@@ -1,3 +1,4 @@
+using System;
 namespace AstroParty
 {
     /// <summary>
@@ -54,7 +55,7 @@ namespace AstroParty
         /// <returns>A string representation of this Direction.</returns>
         public override string ToString()
         {
-            return Convert.ToString(x) + ":" + Convert.ToString(y);
+            return Convert.ToString(_x) + ":" + Convert.ToString(_y);
         }
     }
 }

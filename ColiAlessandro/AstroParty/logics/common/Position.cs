@@ -1,3 +1,4 @@
+using System;
 namespace AstroParty
 {
     /// <summary>
@@ -30,7 +31,7 @@ namespace AstroParty
         /// <returns>The resulting position after the movement.</returns>
         public Position Move(Direction v)
         {
-            return new Position(_x + v.GetX(), _y + v.GetY());
+            return new Position(_x + v.X, _y + v.Y);
         }
 
         /// <summary>
@@ -40,7 +41,7 @@ namespace AstroParty
         /// <returns>The new position resulting from the sum.</returns>
         public Position Add(Position p)
         {
-            return new Position(_x + p.X(), _y + p.Y());
+            return new Position(_x + p.X, _y + p.Y);
         }
 
         /// <summary>
@@ -50,8 +51,8 @@ namespace AstroParty
         /// <returns>The distance to the other position as a double.</returns>
         public double GetDistanceFrom(Position pos)
         {
-            double deltaX = _x - pos.X();
-            double deltaY = _y - pos.Y();
+            double deltaX = _x - pos.X;
+            double deltaY = _y - pos.Y;
             return Math.Sqrt(deltaX * deltaX + deltaY * deltaY);
         }
 
@@ -78,7 +79,7 @@ namespace AstroParty
             }
 
             Position pos = (Position)obj;
-            return Math.Abs(pos.X() - _X()) < EPSILON && Math.Abs(pos.GetY() - _Y()) < EPSILON;
+            return Math.Abs(pos.X - _x) < EPSILON && Math.Abs(pos.Y - _y) < EPSILON;
         }
 
         /// <summary>

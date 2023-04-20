@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using System.Timers;
 using System;
+using System.Linq;
+
 namespace AstroParty
 {
     public class PowerUpSpawner : IPowerUpSpawner
@@ -15,18 +17,18 @@ namespace AstroParty
 
         /// <param name= possiblePowerUpTypes> a collection of the possible types of PowerUPs. </param>
         /// <param name= spawnDelay the delay> between spawns.</param>
-        public PowerUpSpawner(Collection<EntityType> possiblePowerUpTypes, long spawnDelay)
+        public PowerUpSpawner( List<EntityType> possiblePowerUpTypes, long spawnDelay)
         {
-            _possiblePowerUpTypes = new Collection<EntityType>( possiblePowerUpTypes );
+            _possiblePowerUpTypes = new List<EntityType>( possiblePowerUpTypes );
             _spawnDelay = spawnDelay;
         }
 
-        public override void Stop()
+        public void Stop()
         {
             _timer.Stop();
         }
 
-        public override void Start(IGameState world)
+        public void Start(IGameState world)
         {
             _world = world;
             _timer.Interval = _spawnDelay;
@@ -38,11 +40,11 @@ namespace AstroParty
         ///<summary>
         /// creates and adds a new powerUp to the world.
         ///</summary>
-        private void generate()
+        private void Generate()
         {
             //System.out.println("spawn");
-            if (this.world != null && this.world.getPowerUps().size() < PowerUp.MAX_ON_SCREEN) {
-                this.world.addPowerUp(this.pUPfactory.createPowerUp(this.generateType(), this.generatePos()));
+            if (this.world != null && this.world.GetPowerUps().size() < PowerUp.MAX_ON_SCREEN) {
+                this.world.AddPowerUp(this.pUPfactory.CreatePowerUp(this.GenerateType(), this.GeneratePos()));
             }
         }
         
@@ -50,7 +52,7 @@ namespace AstroParty
         // generate the type of the new Power Up between the active ones in the world.
         ///</summary>
         /// <return> the {@link PowerUpTypes} </return>
-        private EntityType generateType()
+        private EntityType GenerateType()
         {
             int rand = random.NextInt64(_possiblePowerUpTypes.Count);
             return _possiblePowerUpTypes.ElementAt(rand);
@@ -60,7 +62,7 @@ namespace AstroParty
         // generates a possible {@link Position} for the new PowerUp.
         ///</summary>
         /// <return> the position </return>
-        private Position generatePos()
+        private Position GeneratePos()
         {
 
             Position pos;

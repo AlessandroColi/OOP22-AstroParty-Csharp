@@ -7,11 +7,11 @@ namespace AstroParty
         private readonly double _length;
         private readonly EntityType _type;
 
-        public override PlayerId Id{ get ; set; }
+        public PlayerId Id{ get ; set; }
 
-        public override double Angle { get ; set; }
+        public double Angle { get ; set; }
 
-        GraphicEntity( Position pos, double height, double length, EntityType type)
+        public GraphicEntity( Position pos, double height, double length, EntityType type)
         {
             _position = pos;
             _height = height;
@@ -19,18 +19,17 @@ namespace AstroParty
             _type = type;
         }
 
-        GraphicEntity( Position pos, double side, EntityType type)
+        public GraphicEntity( Position pos, double side, EntityType type)
         {
-            this( pos, side, side, type);
+            base( pos, side, side, type);
         }
 
-        public override Position GetPosition() => _position ;
+        public Position GetPosition() => _position ;
 
-        public override double GetHeight() => _height ;
+        public double GetHeight() => _height ;
 
-        public override double GetLength() => _length ;
+        public double GetLength() => _length ;
 
-        public override EntityType GetType() => _type ;
+        public EntityType GetEntityType() => _type ;
     }
-
 }

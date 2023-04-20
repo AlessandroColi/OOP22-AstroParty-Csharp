@@ -1,30 +1,27 @@
+ using System;
 namespace AstroParty
 {
     public class PowerUpFactory : IPowerUpFactory
     {
-        public override IPowerUp CreatePowerUp(EntityType type, Position pos)
+        public IPowerUp CreatePowerUp(EntityType type, Position pos)
         {
             switch ( type )
             {
                 case EntityType.UPGRADEDSPEED:
                 {
-                    CreateSpeed(pos);
-                    break;
+                    return CreateSpeed(pos);
                 }
                 case EntityType.SHIELD:
                 {
-                    CreateShield(pos);
-                    break;
+                    return CreateShield(pos);
                 }
                 case EntityType.IMMORTALITY:
                 {
-                    CreateImmortality(pos);
-                    break;
+                    return CreateImmortality(pos);
                 }
                 case EntityType.DOUBLESHOT:
                 {
-                    CreateDoubleShot(pos);
-                    break;
+                    return CreateDoubleShot(pos);
                 }
 
                 default: 
@@ -32,24 +29,24 @@ namespace AstroParty
             }
         }
 
-        private void CreateSpeed( Position position )
+        private IPowerUp CreateSpeed( Position position )
         {
             return new SpeedPowerUp(position);
         }
         
-        private void CreateShisupereld( Position position )
+        private IPowerUp CreateShield( Position position )
         {
             return new ShieldPowerUp(position);
         }
 
-        private void CreateImmortality( Position position )
+        private IPowerUp CreateImmortality( Position position )
         {
-            return new ImmortalityPowerUp(pos);
+            return new ImmortalityPowerUp(position);
         }
 
-        private void CreateDoubleShot( Position position )
+        private IPowerUp CreateDoubleShot( Position position )
         {
-            return new DoubleShotPowerUp(pos);
+            return new DoubleShotPowerUp(position);
         }
     }
 
@@ -60,9 +57,8 @@ namespace AstroParty
         private double _UseTime;
 
 
-        ImmortalityPowerUp ( Position pos)
+        public ImmortalityPowerUp ( Position pos) : base( pos, true, EntityType.IMMORTALITY )
         {
-            PowerUp( pos, true, EntityType.IMMORTALITY );
         }
 
         public override void Use() 
@@ -82,7 +78,7 @@ namespace AstroParty
             if (_inUse)
             {
                 _UseTime += time;
-                if (_UseTime > PowerUp.DURATION) 
+                if (_UseTime > IPowerUp.DURATION) 
                 {
                     base.GetOwner().Mortal = true;
                     base.GetOwner().RemovePowerUp(this);
@@ -94,9 +90,8 @@ namespace AstroParty
 
     class DoubleShotPowerUp : PowerUp
     {
-        DoubleShotPowerUp( Position pos)
+        public DoubleShotPowerUp( Position pos) : base( pos, true, EntityType.DOUBLESHOT )
         {
-            PowerUp( pos, true, EntityType.DOUBLESHOT );
         }
 
         public override void Use() 
@@ -116,9 +111,8 @@ namespace AstroParty
         private bool _inUse;
         private double _UseTime;
 
-        ShieldPowerUp(Position pos)
+        public ShieldPowerUp(Position pos) : base( pos, false, EntityType.SHIELD )
         {
-            PowerUp( pos, false, EntityType.SHIELD );
         }
 
         public override void Use() 
@@ -142,14 +136,13 @@ namespace AstroParty
         private bool _inUse;
         private double _UseTime;
 
-        SpeedPowerUp(Position pos)
+        public SpeedPowerUp(Position pos) : base( pos, false, EntityType.UPGRADEDSPEED )
         {
-            PowerUp( pos, false, EntityType.UPGRADEDSPEED );
         }
 
         public override void Use()
         {
-            base.GetOwner.Speed *= IPowerUp.SPEED_MODIFIER;
+            base.GetOwner().Speed *= IPowerUp.SPEED_MODIFIER;
         }
                     
         public override void Update( double time) 
@@ -165,7 +158,7 @@ namespace AstroParty
                 _UseTime += time;
                 if (_UseTime > PowerUp.DURATION) 
                 {
-                    base.GetOwner.Speed /= IPowerUp.SPEED_MODIFIER;
+                    base.GetOwner().Speed /= IPowerUp.SPEED_MODIFIER;
                     base.GetOwner().RemovePowerUp(this);
                 }
             }

@@ -20,7 +20,7 @@ namespace AstroParty
         ///</summary>
         ///the {@linkplain EntityType} of the entity to be drawn.
         ///</summary>
-        EntityType GetType();
+        EntityType GetEntityType();
 
         /// <summary>
         /// the id of the spaceship ( only used for spaeschips and not for other entities)
