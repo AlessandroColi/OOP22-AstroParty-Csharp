@@ -7,10 +7,7 @@ namespace AstroPartyLogics
         public CollisionEventQueue() => _queue = new Queue<IEvent>();
 
         /// <inheritdoc />
-        public void Notify(IEvent e)
-        {
-            _queue.Enqueue(e);
-        }
+        public void Notify(IEvent e) => _queue.Enqueue(e);
 
         /// <summary>Manages all the events in the queue.</summary>
         /// <param name="state">The current state of the game world.</param>

@@ -5,10 +5,7 @@ namespace AstroPartyLogics
     {
         private Action<IGameState> _manageAction;
 
-        public Event(Action<IGameState> manageAction)
-        {
-            _manageAction = manageAction;
-        }
+        public Event(Action<IGameState> manageAction) => _manageAction = manageAction;
 
         public void Manage(IGameState state) => _manageAction(state);
     }

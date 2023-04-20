@@ -108,7 +108,7 @@ public class GameStateTest
     {
         var state = new GameState();
         var observer = new ObserverExample();
-        IEvent eventExample = new Event(_ => Console.WriteLine("EventManageExample - should not be written"));
+        IEvent eventExample = new Event(_ => Console.WriteLine("EventExample"));
         state.RegisterObserver(observer);
         state.NotifyObservers(eventExample);
         Assert.AreEqual(observer.Queue.Count, 1);

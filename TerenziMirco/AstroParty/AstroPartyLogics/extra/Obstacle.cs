@@ -1,6 +1,9 @@
 using ExtraAPI;
 namespace ExtraImpl
 {
+    /// <summary>
+    /// This is a simplified version of the original class and is implemented for demonstration purposes.
+    /// </summary>
     public class Obstacle : IObstacle
     {
         public IHitBox HitBox => throw new NotImplementedException();
