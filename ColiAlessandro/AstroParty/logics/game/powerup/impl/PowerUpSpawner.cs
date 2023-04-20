@@ -1,5 +1,5 @@
 
-namespace ColiAlessandro.AstroParty.game.powerup.impl
+namespace logics.game.powerup.impl
 {
     public class PowerUpSpawner : IPowerUpSpawner
     {
@@ -13,12 +13,14 @@ namespace ColiAlessandro.AstroParty.game.powerup.impl
 
         /// <param name= possiblePowerUpTypes> a collection of the possible types of PowerUPs. </param>
         /// <param name= spawnDelay the delay> between spawns.</param>
-        public PowerUpSpawnerImpl(Collection<EntityType> possiblePowerUpTypes, long spawnDelay) {
+        public PowerUpSpawnerImpl(Collection<EntityType> possiblePowerUpTypes, long spawnDelay)
+        {
             _possiblePowerUpTypes = new Collection<EntityType>( possiblePowerUpTypes );
             _spawnDelay = spawnDelay;
         }
 
-        override void Start(final GameState world) {
+        override void Start(GameState world)
+        {
             _world = world;
             _timer.Interval = _spawnDelay;
             _timer.AutoReset = true;
@@ -26,14 +28,16 @@ namespace ColiAlessandro.AstroParty.game.powerup.impl
             _timer.Start();
         }
 
-        override vois Stop(){
+        override vois Stop()
+        {
             _timer.Stop();
         }
 
         ///<summary>
         /// creates and adds a new powerUp to the world.
         ///</summary>
-        private void generate() {
+        private void generate()
+        {
             //System.out.println("spawn");
             if (this.world != null && this.world.getPowerUps().size() < PowerUp.MAX_ON_SCREEN) {
                 this.world.addPowerUp(this.pUPfactory.createPowerUp(this.generateType(), this.generatePos()));
@@ -44,7 +48,8 @@ namespace ColiAlessandro.AstroParty.game.powerup.impl
         // generate the type of the new Power Up between the active ones in the world.
         ///</summary>
         /// <return> the {@link PowerUpTypes} </return>
-        private EntityType generateType() {
+        private EntityType generateType()
+        {
             int rand = random.NextInt64(_possiblePowerUpTypes.Count);
             return _possiblePowerUpTypes.ElementAt(rand);
         }
@@ -53,7 +58,8 @@ namespace ColiAlessandro.AstroParty.game.powerup.impl
         // generates a possible {@link Position} for the new PowerUp.
         ///</summary>
         /// <return> the position </return>
-        private Position generatePos() {
+        private Position generatePos()
+        {
 
             Position pos;
 
@@ -66,8 +72,9 @@ namespace ColiAlessandro.AstroParty.game.powerup.impl
             return pos;
         }
 
-        private boolean canExist(Position position) {
-            final CircleHitBox hbox = new CircleHitBoxImpl(position, PowerUp.RELATIVE_SIZE); //TODO ?
+        private boolean canExist(Position position)
+        {
+            CircleHitBox hbox = new CircleHitBoxImpl(position, PowerUp.RELATIVE_SIZE); //TODO ?
             return  this.world.getEntities().stream()
                     .map(entity -> entity.getHitBox())
                     .anyMatch(e -> e.checkCollision(hbox));

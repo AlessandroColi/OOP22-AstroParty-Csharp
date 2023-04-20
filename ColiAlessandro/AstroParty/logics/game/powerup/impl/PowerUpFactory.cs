@@ -1,4 +1,4 @@
-namespace ColiAlessandro.AstroParty.game.powerup.impl
+namespace logics.game.powerup.impl
 {
     public class PowerUpFactory : IPowerUpFactory
     {
@@ -34,7 +34,8 @@ namespace ColiAlessandro.AstroParty.game.powerup.impl
 
         private CreateSpeed( Position position )
         {
-            return new PowerUp( position, false, EntityType.UPGRADEDSPEED ){
+            return new PowerUp( position, false, EntityType.UPGRADEDSPEED )
+            {
 
                 private boolean _inUse;
                 private double _UseTime;
@@ -44,15 +45,18 @@ namespace ColiAlessandro.AstroParty.game.powerup.impl
                         base.GetOwner.Speed *= IPowerUp.SPEED_MODIFIER;
                     }
                     
-                void Update( double time) {
+                void Update( double time) 
+                {
 
-                    if (base.IsPickedUp() && !_inUse) {
+                    if (base.IsPickedUp() && !_inUse) 
+                    {
                         Use();
                     }
 
                     if (_inUse) {
                         _UseTime += time;
-                        if (_UseTime > PowerUp.DURATION) {
+                        if (_UseTime > PowerUp.DURATION) 
+                        {
                             base.GetOwner.Speed /= IPowerUp.SPEED_MODIFIER;
                             base.GetOwner().RemovePowerUp(this);
                         }
@@ -63,15 +67,18 @@ namespace ColiAlessandro.AstroParty.game.powerup.impl
         
         private CreateShisupereld( Position position )
         {
-            return new BasicPowerUp(pos, false, EntityType.SHIELD) {
+            return new BasicPowerUp(pos, false, EntityType.SHIELD) 
+            {
 
-                override void Update( double time) {
+                override void Update( double time) 
+                {
                     if (base.IsPickedUp()) {
                         Use();
                     }
                 }
 
-                override void Use() {
+                override void Use() 
+                {
                     base.GetOwner().NewShield();
                     base.GetOwner().RemovePowerUp(this);
                 }
@@ -80,25 +87,30 @@ namespace ColiAlessandro.AstroParty.game.powerup.impl
 
         private CreateImmortality( Position position )
         {
-            return new BasicPowerUp(pos, false,  EntityType.IMMORTALITY) {
+            return new BasicPowerUp(pos, false,  EntityType.IMMORTALITY)
+            {
 
                 private boolean _inUse;
                 private double _UseTime;
 
-                public void Use() {
+                public void Use() 
+                {
                     _inUse = true;
                     base.GetOwner().Mortal = false;
                 }
 
-                public void Update( double time) {
+                public void Update( double time)
+                {
 
-                    if (base.IsPickedUp() && !_inUse) {
+                    if (base.IsPickedUp() && !_inUse) 
+                    {
                         Use();
                     }
 
                     if (_inUse) {
                         _UseTime += time;
-                        if (_UseTime > PowerUp.DURATION) {
+                        if (_UseTime > PowerUp.DURATION) 
+                        {
                             base.GetOwner().Mortal = true;
                             base.GetOwner().RemovePowerUp(this);
                         }
@@ -109,12 +121,15 @@ namespace ColiAlessandro.AstroParty.game.powerup.impl
 
         private CreateDoubleShot( Position position )
         {
-            return new BasicPowerUp(pos, true,  EntityType.DOUBLESHOT) {
+            return new BasicPowerUp(pos, true,  EntityType.DOUBLESHOT)
+            {
 
-                override void Update( double time) {
+                override void Update( double time) 
+                {
                 }
 
-                override void Use() {
+                override void Use() 
+                {
                     base.GetOwner().RemovePowerUp(this);
                 }
             };

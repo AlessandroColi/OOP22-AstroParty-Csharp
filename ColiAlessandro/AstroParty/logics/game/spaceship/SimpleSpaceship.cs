@@ -1,5 +1,5 @@
 
-namespace ColiAlessandro.AstroParty.game.spaceship
+namespace logics.game.spaceship
 {
     public class SimpleSpaceship : ISpaceship
     {

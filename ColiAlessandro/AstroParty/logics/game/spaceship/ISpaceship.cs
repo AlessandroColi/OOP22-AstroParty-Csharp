@@ -1,4 +1,4 @@
-namespace ColiAlessandro.AstroParty.game.spaceship
+namespace logics.game.spaceship
 {   /// <summary>
     /// Interface for a basic spaceship in AstroParty.
     /// </summary>

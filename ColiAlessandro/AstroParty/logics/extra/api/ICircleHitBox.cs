@@ -1,4 +1,4 @@
-namespace ColiAlessandro.AstroParty.extra.api
+namespace logics.extra.api
 {
     public interface ICircleHitBox
     {

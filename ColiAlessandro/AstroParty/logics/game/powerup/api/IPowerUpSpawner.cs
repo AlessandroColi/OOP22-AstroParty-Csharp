@@ -1,4 +1,4 @@
-namespace ColiAlessandro.AstroParty.game.powerup.api
+namespace logics.game.powerup.api
 {
     public interface IPowerUpSpawner
     {

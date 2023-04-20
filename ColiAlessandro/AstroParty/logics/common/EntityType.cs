@@ -1,4 +1,4 @@
-namespace ColiAlessandro.AstroParty.common
+namespace logics.common
 {
     /// <summary>
     /// An enum of the possible types of PowerUp inside AstroParty.
@@ -61,5 +61,3 @@ namespace ColiAlessandro.AstroParty.common
         PROJECTILE
     }
 }
-
-//TODO come aggiungere il resto

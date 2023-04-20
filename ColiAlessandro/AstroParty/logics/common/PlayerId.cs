@@ -1,4 +1,4 @@
-namespace ColiAlessandro.AstroParty.common
+namespace logics.common
 {
     public enum PlayerId
     {

@@ -1,4 +1,4 @@
-namespace ColiAlessandro.AstroParty.game.PowerUp.impl
+namespace logics.game.PowerUp.impl
 {
     public abstract class PowerUp : IPowerup
     {
@@ -16,13 +16,14 @@ namespace ColiAlessandro.AstroParty.game.PowerUp.impl
 
         EntityType Type{ get ; private set; }
 
-        IgraphicEntity GraphicComponent{ get => new GraphicEntity(_position, IPowerup.RELATIVE_SIZE, Type); ; } 
+        IgraphicEntity GraphicComponent{ get => new GraphicEntity(_position, IPowerup.RELATIVE_SIZE, Type); } 
 
         Position GetPosition() => _position;
         
         bool PickUp(ISpaceship owner)
         {
-            if( _owner == null || owner = null){
+            if( _owner == null || owner = null)
+            {
                 return false
             }
             _owner = owner;
