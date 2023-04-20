@@ -34,10 +34,5 @@ namespace AstroParty
         /// Determines whether this power up is offensive.
         /// </summary>
         bool Offensive{ get ; }
-
-        /// <summary>
-        /// the hitbox of the PowerUp.
-        /// </summary>
-        override ICircleHitBox GetHitbox();
     }
 }

@@ -2,7 +2,7 @@ namespace AstroParty
 {
     public class PowerUpFactory : IPowerUpFactory
     {
-        IPowerUp CreatePowerUp(EntityType type, Position pos)
+        public override IPowerUp CreatePowerUp(EntityType type, Position pos)
         {
             switch ( type )
             {
@@ -32,107 +32,143 @@ namespace AstroParty
             }
         }
 
-        private CreateSpeed( Position position )
+        private void CreateSpeed( Position position )
         {
-            return new PowerUp( position, false, EntityType.UPGRADEDSPEED )
-            {
-
-                private boolean _inUse;
-                private double _UseTime;
-
-                    override void Use()
-                    {
-                        base.GetOwner.Speed *= IPowerUp.SPEED_MODIFIER;
-                    }
-                    
-                void Update( double time) 
-                {
-
-                    if (base.IsPickedUp() && !_inUse) 
-                    {
-                        Use();
-                    }
-
-                    if (_inUse) {
-                        _UseTime += time;
-                        if (_UseTime > PowerUp.DURATION) 
-                        {
-                            base.GetOwner.Speed /= IPowerUp.SPEED_MODIFIER;
-                            base.GetOwner().RemovePowerUp(this);
-                        }
-                    }
-                }
-            };
+            return new SpeedPowerUp(position);
         }
         
-        private CreateShisupereld( Position position )
+        private void CreateShisupereld( Position position )
         {
-            return new BasicPowerUp(pos, false, EntityType.SHIELD) 
-            {
-
-                override void Update( double time) 
-                {
-                    if (base.IsPickedUp()) {
-                        Use();
-                    }
-                }
-
-                override void Use() 
-                {
-                    base.GetOwner().NewShield();
-                    base.GetOwner().RemovePowerUp(this);
-                }
-            };
+            return new ShieldPowerUp(position);
         }
 
-        private CreateImmortality( Position position )
+        private void CreateImmortality( Position position )
         {
-            return new BasicPowerUp(pos, false,  EntityType.IMMORTALITY)
-            {
-
-                private boolean _inUse;
-                private double _UseTime;
-
-                public void Use() 
-                {
-                    _inUse = true;
-                    base.GetOwner().Mortal = false;
-                }
-
-                public void Update( double time)
-                {
-
-                    if (base.IsPickedUp() && !_inUse) 
-                    {
-                        Use();
-                    }
-
-                    if (_inUse) {
-                        _UseTime += time;
-                        if (_UseTime > PowerUp.DURATION) 
-                        {
-                            base.GetOwner().Mortal = true;
-                            base.GetOwner().RemovePowerUp(this);
-                        }
-                    }
-                }
-            };
+            return new ImmortalityPowerUp(pos);
         }
 
-        private CreateDoubleShot( Position position )
+        private void CreateDoubleShot( Position position )
         {
-            return new BasicPowerUp(pos, true,  EntityType.DOUBLESHOT)
+            return new DoubleShotPowerUp(pos);
+        }
+    }
+
+    class ImmortalityPowerUp : PowerUp
+    {
+        
+        private bool _inUse;
+        private double _UseTime;
+
+
+        ImmortalityPowerUp ( Position pos)
+        {
+            PowerUp( pos, true, EntityType.IMMORTALITY );
+        }
+
+        public override void Use() 
+        {
+            _inUse = true;
+            base.GetOwner().Mortal = false;
+        }
+
+        public override void Update( double time)
+        {
+            
+            if (base.IsPickedUp() && !_inUse) 
             {
+                Use();
+            }
 
-                override void Update( double time) 
+            if (_inUse)
+            {
+                _UseTime += time;
+                if (_UseTime > PowerUp.DURATION) 
                 {
-                }
-
-                override void Use() 
-                {
+                    base.GetOwner().Mortal = true;
                     base.GetOwner().RemovePowerUp(this);
                 }
-            };
+            }
+        }
+    }
+    
+
+    class DoubleShotPowerUp : PowerUp
+    {
+        DoubleShotPowerUp( Position pos)
+        {
+            PowerUp( pos, true, EntityType.DOUBLESHOT );
+        }
+
+        public override void Use() 
+        {
+            base.GetOwner().RemovePowerUp(this);
+        }
+
+        public override void Update( double time) 
+        {
+            //nothing to do
+        }
+    }
+
+    class ShieldPowerUp : PowerUp
+    {
+
+        private bool _inUse;
+        private double _UseTime;
+
+        ShieldPowerUp(Position pos)
+        {
+            PowerUp( pos, false, EntityType.SHIELD );
+        }
+
+        public override void Use() 
+        {
+            base.GetOwner().NewShield();
+            base.GetOwner().RemovePowerUp(this);
+        }
+
+        public override void Update( double time) 
+        {
+            if (base.IsPickedUp()) 
+            {
+                Use();
+            }
+        }
+    }
+
+    class SpeedPowerUp : PowerUp
+    {
+
+        private bool _inUse;
+        private double _UseTime;
+
+        SpeedPowerUp(Position pos)
+        {
+            PowerUp( pos, false, EntityType.UPGRADEDSPEED );
+        }
+
+        public override void Use()
+        {
+            base.GetOwner.Speed *= IPowerUp.SPEED_MODIFIER;
+        }
+                    
+        public override void Update( double time) 
+        {
+
+            if (base.IsPickedUp() && !_inUse) 
+            {
+                Use();
+            }
+    
+            if (_inUse) 
+            {
+                _UseTime += time;
+                if (_UseTime > PowerUp.DURATION) 
+                {
+                    base.GetOwner.Speed /= IPowerUp.SPEED_MODIFIER;
+                    base.GetOwner().RemovePowerUp(this);
+                }
+            }
         }
     }
 }

@@ -28,11 +28,11 @@ namespace AstroParty
         /// <summary>
         /// the graphic entity of this power up.
         /// </summary>
-        IgraphicEntity GraphicComponent{ get ; }
+        IGraphicEntity GraphicComponent{ get ; }
 
         /// <summary>
         /// HitBox of the entity.
         /// </summary>
-        HitBox GetHitbox();
+        IHitBox GetHitbox();
     }
 }

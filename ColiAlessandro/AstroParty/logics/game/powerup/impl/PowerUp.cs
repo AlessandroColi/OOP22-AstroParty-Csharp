@@ -1,43 +1,43 @@
 namespace AstroParty
 {
-    public abstract class PowerUp : IPowerup
+    public abstract class PowerUp : IPowerUp
     {
         private ISpaceship _owner;
         private readonly Position _position;
-        private boolean _pickedUp;
+        private bool _pickedUp;
 
-        PowerUp( Position position, boolean offensive, EntityType type )
+        PowerUp( Position position, bool offensive, EntityType type )
         {
             _position = position;
             Type = type;
             Offensive = offensive;
         }
-        bool Offensive{ get ; private set; }
+        public override bool Offensive{ get ; private set; }
 
-        EntityType Type{ get ; private set; }
+        public override EntityType Type{ get ; private set; }
 
-        IgraphicEntity GraphicComponent{ get => new GraphicEntity(_position, IPowerup.RELATIVE_SIZE, Type); } 
+        public override IGraphicEntity GraphicComponent{ get => new GraphicEntity(_position, IPowerUp.RELATIVE_SIZE, Type); } 
 
-        Position GetPosition() => _position;
+        public override Position GetPosition() => _position;
         
-        bool PickUp(ISpaceship owner)
+        public override bool PickUp(ISpaceship owner)
         {
             if( _owner == null || owner = null)
             {
-                return false
+                return false;
             }
             _owner = owner;
             return true;
         }
 
-        override ICircleHitBox GetHitbox() => null; // not implemented in C#
+        public override IHitBox GetHitbox() => null; // not implemented in C#
 
         protected ISpaceship GetOwner() => _owner;
 
-        protected boolean IsPickedUp() => _owner != null;
+        protected bool IsPickedUp() => _owner != null;
 
-        abstract void Use();
+        abstract public override void Use();
 
-        abstract void Update(double time);
+        abstract public override void Update(double time);
     }
 }

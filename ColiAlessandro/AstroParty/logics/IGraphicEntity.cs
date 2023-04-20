@@ -1,4 +1,4 @@
-namespace ColiAlessandro.AstroParty
+namespace AstroParty
 {
     public interface IGraphicEntity
     {
@@ -25,7 +25,7 @@ namespace ColiAlessandro.AstroParty
         /// <summary>
         /// the id of the spaceship ( only used for spaeschips and not for other entities)
         /// </summary>
-        PlayerId? Id{ get ; set; }
+        PlayerId Id{ get ; set; }
 
         /// <summary>
         /// the angle at witch the entity is rotated

@@ -1,15 +1,15 @@
-namespace ColiAlessandro.AstroParty
+namespace AstroParty
 {
-    public class GraphicEntity :IGraphicEntity
+    public class GraphicEntity : IGraphicEntity
     {
         private readonly Position _position;
         private readonly double _height;
         private readonly double _length;
         private readonly EntityType _type;
 
-        PlayerId Id{ get ; set; }
+        public override PlayerId Id{ get ; set; }
 
-        double Angle{ get ; set; }
+        public override double Angle { get ; set; }
 
         GraphicEntity( Position pos, double height, double length, EntityType type)
         {
@@ -24,13 +24,13 @@ namespace ColiAlessandro.AstroParty
             this( pos, side, side, type);
         }
 
-        Position GetPosition() => _position ;
+        public override Position GetPosition() => _position ;
 
-        double GetHeight() => _height ;
+        public override double GetHeight() => _height ;
 
-        double GetLength() => _length ;
+        public override double GetLength() => _length ;
 
-        EntityType GetType() => _type ;
+        public override EntityType GetType() => _type ;
     }
 
 }

@@ -22,7 +22,7 @@ namespace AstroParty
         /// </summary>
         /// <param name="pUp">The Powerup to be equipped.</param>
         /// <returns>True if it can be picked up.</returns>
-        bool EquipPowerUp(IPowerup pUp);
+        bool EquipPowerUp(IPowerUp pUp);
 
         /// <summary>
         /// Shoots a Projectile.
@@ -38,7 +38,7 @@ namespace AstroParty
         /// Removes the power up after it's been used.
         /// </summary>
         /// <param name="upgradedSpeed">The power up to be removed.</param>
-        void RemovePowerUp(IPowerup upgradedSpeed);
+        void RemovePowerUp(IPowerUp upgradedSpeed);
 
         /// <summary>
         /// either can be killed or not ( does not consider the shield )
@@ -54,11 +54,6 @@ namespace AstroParty
         /// the PlayerId of this spaceship.
         /// </summary>
         PlayerId Id{ get ; }
-
-        /// <summary>
-        /// The CircleHitBox of the spaceship.
-        /// </summary>
-        override ICircleHitBox GetHitBox();
 
         /// <summary>
         /// The travel speed.

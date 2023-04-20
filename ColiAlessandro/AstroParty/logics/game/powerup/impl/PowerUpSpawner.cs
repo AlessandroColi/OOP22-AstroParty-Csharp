@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using System.Timers;
+using System;
 namespace AstroParty
 {
     public class PowerUpSpawner : IPowerUpSpawner
@@ -12,24 +15,24 @@ namespace AstroParty
 
         /// <param name= possiblePowerUpTypes> a collection of the possible types of PowerUPs. </param>
         /// <param name= spawnDelay the delay> between spawns.</param>
-        public PowerUpSpawnerImpl(Collection<EntityType> possiblePowerUpTypes, long spawnDelay)
+        public PowerUpSpawner(Collection<EntityType> possiblePowerUpTypes, long spawnDelay)
         {
             _possiblePowerUpTypes = new Collection<EntityType>( possiblePowerUpTypes );
             _spawnDelay = spawnDelay;
         }
 
-        override void Start(GameState world)
+        public override void Stop()
+        {
+            _timer.Stop();
+        }
+
+        public override void Start(IGameState world)
         {
             _world = world;
             _timer.Interval = _spawnDelay;
             _timer.AutoReset = true;
             _timer.Elapsed += ( sender, e ) => Generate();
             _timer.Start();
-        }
-
-        override vois Stop()
-        {
-            _timer.Stop();
         }
 
         ///<summary>
@@ -71,7 +74,7 @@ namespace AstroParty
             return pos;
         }
 
-        private boolean canExist(Position position)
+        private bool canExist(Position position)
         {
             CircleHitBox hbox = new CircleHitBoxImpl(position, PowerUp.RELATIVE_SIZE); //TODO ?
             return  this.world.getEntities().stream()

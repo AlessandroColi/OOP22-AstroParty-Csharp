@@ -6,7 +6,7 @@ namespace AstroParty
         private Position _position;
         private Position _lastPosition;
 
-        private IPowerup? _powerUp;
+        private IPowerUp _powerUp;
         private bool _shield;
         private bool _immortal;
 
@@ -21,19 +21,19 @@ namespace AstroParty
         private bool _recharging;
         private Timer _timer = new System.Timers.Timer();
 
-        public bool Mortal{ get => !(_immortal || _shield); 
+        public override bool Mortal{ get => !(_immortal || _shield); 
                             set => _immortal ; }
-        public double Angle{ get ; private set; }
-        public PlayerId Id{ get ; private set; }
-        IGraphicEntity GraphicComponent{ 
+        public override double Angle{ get ; private set; }
+        public override PlayerId Id{ get ; private set; }
+        public override IGraphicEntity GraphicComponent{ 
             get {
                 var ret = new GraphicEntity(_position, ISpaceship.RELATIVE_SIZE, EntityType.SPACESHIP);
                 ret.Angle = _angle;
                 ret.Id = Id;
                 return ret;
             } }    
-        public double Speed{ get ; set; }
-        public bool Turning{ get ; set; }
+        public override double Speed{ get ; set; }
+        public override bool Turning{ get ; set; }
 
         public SimpleSpaceship( Position startPosition, Direction startDirection,
                         double angle, IGameState world, double speed,
@@ -58,16 +58,16 @@ namespace AstroParty
             _timer.Elapsed += ( sender, e ) => AddBullet();
         }
 
-        public void ResetPosition()
+        public override void ResetPosition()
         {
             _position = _lastPosition;
         }
     
-        Position GetPosition() => _position;
+        public override Position GetPosition() => _position;
 
-        bool EquipPowerUp(IPowerup pUp) => _powerUp = pUp;
+        public override bool EquipPowerUp(IPowerUp pUp) => _powerUp = pUp;
 
-        void Shoot()
+        public override void Shoot()
         {
             if( _bullets == 0)
             {
@@ -95,7 +95,7 @@ namespace AstroParty
             StartTimer();
         }
 
-        bool Hit()
+        public override bool Hit()
         {
             if( !Mortal )
             {
@@ -108,7 +108,7 @@ namespace AstroParty
             return true;
         }
 
-        void Update(double time)
+        public override void Update(double time)
         {
             if( Turning ){
                 UpdateDirection( time );
@@ -122,16 +122,16 @@ namespace AstroParty
             Move( time );
         }
 
-        void NewShield() => _shield = true;
+        public override void NewShield() => _shield = true;
 
-        void RemovePowerUp(IPowerup pUp) {
+        public override void RemovePowerUp(IPowerUp pUp) {
             if( pUp == _powerUp ?? null)
             {
                 _powerUp = null;
             }
         }
 
-        ICircleHitBox GetHitBox()=> null; // not implemented in C#
+        public override ICircleHitBox GetHitBox()=> null; // not implemented in C#
 
         private void  CreateProjectile() => _world.add( new IProjectile() );
 

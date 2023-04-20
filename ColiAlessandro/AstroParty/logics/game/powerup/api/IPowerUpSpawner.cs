@@ -12,6 +12,6 @@ namespace AstroParty
         /// </summary>
         /// <param name: world> the gamestate </param>
         
-        void Start(GameState world);
+        void Start(IGameState world);
     }
 }
