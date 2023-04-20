@@ -1,4 +1,4 @@
-namespace logics.common
+namespace AstroParty
 {
     /// <summary>
     /// An enum of the possible types of PowerUp inside AstroParty.

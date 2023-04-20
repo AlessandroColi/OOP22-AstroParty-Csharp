@@ -1,5 +1,4 @@
-
-namespace logics.game.powerup.impl
+namespace AstroParty
 {
     public class PowerUpSpawner : IPowerUpSpawner
     {

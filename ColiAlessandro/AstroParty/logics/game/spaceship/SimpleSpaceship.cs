@@ -1,5 +1,4 @@
-
-namespace logics.game.spaceship
+namespace AstroParty
 {
     public class SimpleSpaceship : ISpaceship
     {

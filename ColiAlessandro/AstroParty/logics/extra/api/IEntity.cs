@@ -1,4 +1,4 @@
-namespace logics.extra.api
+namespace AstroParty
 {
     public interface IEntity
     {

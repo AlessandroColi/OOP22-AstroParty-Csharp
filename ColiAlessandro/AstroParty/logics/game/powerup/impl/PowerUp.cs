@@ -1,4 +1,4 @@
-namespace logics.game.PowerUp.impl
+namespace AstroParty
 {
     public abstract class PowerUp : IPowerup
     {

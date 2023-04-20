@@ -1,4 +1,4 @@
-namespace logics.game.powerup.api
+namespace AstroParty
 {   /// <summary>
     /// A power up inside AstroParty. 
     /// </summary>

@@ -1,4 +1,4 @@
-namespace logics.common
+namespace AstroParty
 {
     /// <summary>
     /// A simple class that represents a point in a two-dimensional space.

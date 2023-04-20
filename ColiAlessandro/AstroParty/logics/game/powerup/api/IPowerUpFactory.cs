@@ -1,5 +1,5 @@
 
-namespace logics.game.powerup.api
+namespace AstroParty
 {
     public interface IPowerUpFactory
     {

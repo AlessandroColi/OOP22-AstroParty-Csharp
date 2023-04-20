@@ -1,4 +1,4 @@
-namespace logics.common
+namespace AstroParty
 {
     /// <summary>
     /// A simple class describing movements as the distance in X and Y coordinates from the starting point.

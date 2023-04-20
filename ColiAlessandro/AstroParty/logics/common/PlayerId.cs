@@ -1,4 +1,4 @@
-namespace logics.common
+namespace AstroParty
 {
     public enum PlayerId
     {
