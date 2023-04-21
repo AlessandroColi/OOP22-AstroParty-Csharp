@@ -156,7 +156,7 @@ namespace AstroParty
             if (_inUse) 
             {
                 _UseTime += time;
-                if (_UseTime > PowerUp.DURATION) 
+                if (_UseTime > IPowerUp.DURATION) 
                 {
                     base.GetOwner().Speed /= IPowerUp.SPEED_MODIFIER;
                     base.GetOwner().RemovePowerUp(this);

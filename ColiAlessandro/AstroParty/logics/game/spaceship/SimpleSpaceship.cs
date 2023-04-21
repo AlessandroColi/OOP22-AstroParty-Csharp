@@ -68,7 +68,15 @@ namespace AstroParty
     
         public Position GetPosition() => _position;
 
-        public bool EquipPowerUp(IPowerUp pUp) => _powerUp = pUp;
+        public bool EquipPowerUp(IPowerUp pUp)
+        {
+            if ( _powerUp == null)
+            {
+                _powerUp = pUp;
+                return true;
+            }
+            return false;
+        }
 
         public void Shoot()
         {
@@ -128,7 +136,7 @@ namespace AstroParty
         public void NewShield() => _shield = true;
 
         public void RemovePowerUp(IPowerUp pUp) {
-            if( pUp == _powerUp ?? null)
+            if( pUp == _powerUp)
             {
                 _powerUp = null;
             }
@@ -136,12 +144,12 @@ namespace AstroParty
 
         public IHitBox GetHitbox() => null; // not implemented in C#
 
-        private void  CreateProjectile() => _world.add( new IProjectile() );
+        private void  CreateProjectile() => null; // not implemented in C#
 
         private void StartTimer()
         {
             if( !_timer.Enabled && _recharging ){
-                _timer.start();
+                _timer.Start();
                 _recharging = true;
             }
         }
@@ -158,7 +166,7 @@ namespace AstroParty
 
         private void UpdateDirection( double time )
         {
-            _angle = ( _angle + turnTime * ISpaceship.ROTATION_SPEED ) % 360;
+            _angle = ( _angle + time * ISpaceship.ROTATION_SPEED ) % 360;
             double dirX = Math.cos( Math.PI * _angle / 180.0);
             double dirY = Math.sin( Math.PI * _angle / 180.0);
 

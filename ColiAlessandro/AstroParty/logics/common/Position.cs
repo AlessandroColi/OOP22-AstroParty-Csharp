@@ -101,7 +101,7 @@ namespace AstroParty
         /// <returns>A string that represents this position as "X:Y".</returns>
         public override string ToString()
         {
-            return Convert.ToString(x) + ":" + Convert.ToString(y);
+            return Convert.ToString(_x) + ":" + Convert.ToString(_y);
         }
 
         /// <summary>

@@ -43,8 +43,8 @@ namespace AstroParty
         private void Generate()
         {
             //System.out.println("spawn");
-            if (this.world != null && this.world.GetPowerUps().size() < PowerUp.MAX_ON_SCREEN) {
-                this.world.AddPowerUp(this.pUPfactory.CreatePowerUp(this.GenerateType(), this.GeneratePos()));
+            if (_world != null && _world.GetPowerUps().size() < IPowerUp.MAX_ON_SCREEN) {
+                _world.AddPowerUp(_pUPfactory.CreatePowerUp(_GenerateType(), _GeneratePos()));
             }
         }
         
@@ -79,7 +79,7 @@ namespace AstroParty
         private bool canExist(Position position)
         {
             CircleHitBox hbox = new CircleHitBoxImpl(position, PowerUp.RELATIVE_SIZE); //TODO ?
-            return  this.world.getEntities().stream()
+            return  _world.getEntities().stream()
                     .map(entity -> entity.getHitBox())
                     .anyMatch(e -> e.checkCollision(hbox));
     }

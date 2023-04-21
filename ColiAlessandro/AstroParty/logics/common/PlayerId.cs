@@ -13,7 +13,7 @@ namespace AstroParty
     {
         private static Dictionary<PlayerId,string> _map = new Dictionary<PlayerId,string>();
 
-        public static string GetName( PlayerId id) => _map.TryGetValue( id, $"Player {((int)id).ToString()}" );
+        public static string GetName( PlayerId id) => _map.TryGetValue( id, ((int)id).ToString() );
 
         public static void SetName( PlayerId id, string name) => _map.TryAdd(id, name); // una volta scelto il nome non si può cambiare
     }
