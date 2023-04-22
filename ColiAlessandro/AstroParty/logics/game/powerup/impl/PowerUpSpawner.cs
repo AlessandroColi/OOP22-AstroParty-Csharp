@@ -43,8 +43,8 @@ namespace AstroParty
         private void Generate()
         {
             //System.out.println("spawn");
-            if (_world != null && _world.GetPowerUps().size() < IPowerUp.MAX_ON_SCREEN) {
-                _world.AddPowerUp(_pUPfactory.CreatePowerUp(_GenerateType(), _GeneratePos()));
+            if (_world != null && _world.GetPowerUps().Count < IPowerUp.MAX_ON_SCREEN) {
+                _world.AddPowerUp(_pUPfactory.CreatePowerUp(GenerateType(), GeneratePos()));
             }
         }
         
@@ -54,7 +54,7 @@ namespace AstroParty
         /// <return> the {@link PowerUpTypes} </return>
         private EntityType GenerateType()
         {
-            int rand = random.NextInt64(_possiblePowerUpTypes.Count);
+            int rand = _random.Next(_possiblePowerUpTypes.Count);
             return _possiblePowerUpTypes.ElementAt(rand);
         }
 
@@ -66,10 +66,19 @@ namespace AstroParty
         {
 
             Position pos;
+            double rand;
+            double x , y ;
 
             do {
-                pos = new Position(random.nextDouble(IGameState.WIDTH - IPowerUp.RELATIVE_SIZE * 2) + IPowerUp.RELATIVE_SIZE,
-                        random.nextDouble(IGameState.HEIGHT - IPowerUp.RELATIVE_SIZE * 2) + IPowerUp.RELATIVE_SIZE);
+
+                rand = _random.NextDouble();
+                x = rand * (IGameState.WIDTH - IPowerUp.RELATIVE_SIZE * 2);
+                
+                rand = _random.NextDouble();
+                y = rand * (IGameState.HEIGHT - IPowerUp.RELATIVE_SIZE * 2);
+
+                pos = new Position(x + IPowerUp.RELATIVE_SIZE,
+                                    y + IPowerUp.RELATIVE_SIZE);
 
             } while (canExist(pos));
 
@@ -78,10 +87,8 @@ namespace AstroParty
 
         private bool canExist(Position position)
         {
-            CircleHitBox hbox = new CircleHitBoxImpl(position, PowerUp.RELATIVE_SIZE); //TODO ?
-            return  _world.getEntities().stream()
-                    .map(entity -> entity.getHitBox())
-                    .anyMatch(e -> e.checkCollision(hbox));
-    }
+            return true;
+            // outside needed methods are not implemented in c# inside astroparty
+        }
     }
 }

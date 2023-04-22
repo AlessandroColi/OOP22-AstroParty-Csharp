@@ -125,9 +125,9 @@ namespace AstroParty
                 UpdateDirection( time );
             }
 
-            if( _powerUp.HasValue )
+            if( _powerUp != null )
             {
-                _powerUp.Value.Update( time );
+                _powerUp.Update( time );
             }
 
             Move( time );
@@ -144,7 +144,7 @@ namespace AstroParty
 
         public IHitBox GetHitbox() => null; // not implemented in C#
 
-        private void  CreateProjectile() => null; // not implemented in C#
+        private void  CreateProjectile(){} // not implemented in C#
 
         private void StartTimer()
         {
@@ -167,8 +167,8 @@ namespace AstroParty
         private void UpdateDirection( double time )
         {
             _angle = ( _angle + time * ISpaceship.ROTATION_SPEED ) % 360;
-            double dirX = Math.cos( Math.PI * _angle / 180.0);
-            double dirY = Math.sin( Math.PI * _angle / 180.0);
+            double dirX = Math.Cos( Math.PI * _angle / 180.0);
+            double dirY = Math.Sin( Math.PI * _angle / 180.0);
 
             _direction = new Direction(dirX, dirY);
         }
@@ -176,7 +176,7 @@ namespace AstroParty
         private void Move( double time )
         {
             _lastPosition = _position;
-            _position = _position.Add( _direction.Multiply( Speed * time ) );
+            _position = _position.Move( _direction.Multiply( Speed * time ) );
         }
     }
 }

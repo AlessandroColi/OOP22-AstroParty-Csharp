@@ -27,6 +27,7 @@ namespace AstroParty
                 return false;
             }
             _owner = owner;
+            _pickedUp = true;
             return true;
         }
 
@@ -36,7 +37,7 @@ namespace AstroParty
 
         protected ISpaceship GetOwner() => _owner;
 
-        protected bool IsPickedUp() => _owner != null;
+        protected bool IsPickedUp() => _pickedUp;
 
         abstract public void Use();
 

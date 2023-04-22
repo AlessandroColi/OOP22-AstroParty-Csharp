@@ -107,10 +107,6 @@ namespace AstroParty
 
     class ShieldPowerUp : PowerUp
     {
-
-        private bool _inUse;
-        private double _UseTime;
-
         public ShieldPowerUp(Position pos) : base( pos, false, EntityType.SHIELD )
         {
         }
@@ -143,6 +139,7 @@ namespace AstroParty
         public override void Use()
         {
             base.GetOwner().Speed *= IPowerUp.SPEED_MODIFIER;
+            _inUse = true;
         }
                     
         public override void Update( double time) 

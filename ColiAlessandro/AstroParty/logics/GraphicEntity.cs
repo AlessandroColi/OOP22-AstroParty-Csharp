@@ -19,9 +19,9 @@ namespace AstroParty
             _type = type;
         }
 
-        public GraphicEntity(Position pos, double side, EntityType type)
+        public GraphicEntity(Position pos, double side, EntityType type) 
+            : this(pos, side, side, type)
         {
-            this(pos, side, side, type);
         }
 
         public Position GetPosition() => _position;
