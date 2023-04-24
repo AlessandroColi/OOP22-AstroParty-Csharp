@@ -3,7 +3,10 @@
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
   </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="C:\Users\dario\oop_C#\OOP22-AstroParty-Csharp\TerenziMirco\AstroParty\AstroPartyLogics\AstroPartyLogics.csproj" />
+  </ItemGroup>
 
 </Project>
